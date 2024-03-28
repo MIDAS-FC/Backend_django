@@ -5,8 +5,7 @@ from gtts import gTTS
 
 # mp3 파일 생성해 반환.
 def make_voice(request):
-    # lang 이라는 쿼리 매개변수의 값을 가져오는데 없으면 기본값으로 en 사용.
-    lang = request.GET.get("lang", "en")
+    lang = request.GET.get("lang")
     message = request.GET.get("message")
 
     response = HttpResponse()

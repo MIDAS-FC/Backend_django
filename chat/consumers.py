@@ -26,15 +26,15 @@ class ChatConsumer(JsonWebsocketConsumer):
                 "translate": assistant_message[1],
             })
         elif content_dict["type"] == "set-data":
-            self.set_data(level=content_dict["level"], user_lang=content_dict["user_language"],
-                          chat_lang=content_dict["chat_language"])
+            self.set_data(level=content_dict["level"], user_lang=content_dict["userLang"],
+                          chat_lang=content_dict["chatLang"])
             self.send_json({
                 "type": "success",
-                "message": f"level, language 설정 성공"
+                "message": f"설정 변경 성공"
             })
         elif content_dict["type"] == "init-data":
-            assistant_message = self.init_data(level=content_dict["level"], user_lang=content_dict["user_lang"],
-                                               chat_lang=content_dict["chat_language"]).split("&")
+            assistant_message = self.init_data(level=content_dict["level"], user_lang=content_dict["userLang"],
+                                               chat_lang=content_dict["chatLang"]).split("&")
             self.send_json({
                 "type": "assistant-message",
                 "message": assistant_message[0],
